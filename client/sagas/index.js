@@ -1,9 +1,7 @@
-import daySaga from 'client/sagas/daySaga'
-import votesSaga from 'client/sagas/votesSaga'
+import addressesSaga from 'client/sagas/addressesSaga'
 
 export default function* () {
   yield [
-    daySaga(),
-    votesSaga(),
+    addressesSaga(),
   ]
 }

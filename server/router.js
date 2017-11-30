@@ -1,15 +1,11 @@
 import Router from 'koa-router'
 
-import pagesController from 'server/controllers/pages'
-import daysController from 'server/controllers/days'
-import votesController from 'server/controllers/votes'
+import addressesController from 'server/controllers/addresses'
 
 const router = new Router()
 
 router
-  .get('/', pagesController.get)
-  .get('/eth', daysController.eth)
-  .get('/day', daysController.get)
-  .post('/votes', votesController.post)
+  .get('/addresses', addressesController.get)
+  .post('/addresses', addressesController.post)
 
 export default router

@@ -18,9 +18,6 @@ export const parseResponse = (response) => {
   return response.text()
 }
 
-/*
- * TODO: find a more secure solution to send cookies for other domains.
- */
 export const fetchUrl = (url, params = {}) =>
   fetch(url, {
     credentials: 'include',

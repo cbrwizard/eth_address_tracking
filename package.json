@@ -8,9 +8,7 @@
     "backend:dev": "NODE_PATH=. ENV=development NODE_ENV=development pm2 start processes.config.js --watch --only backend --no-daemon --env development",
     "backend:production": "NODE_PATH=. NODE_ENV=production pm2 start processes.config.js --only backend --env production",
     "frontend:dev": "ENV=development NODE_ENV=development webpack-dev-server --inline",
-    "frontend:production": "NODE_ENV=production webpack -p",
-    "db:dev": "mongod --config config/mongod.conf",
-    "deploy": ". cli/deploy.sh"
+    "frontend:production": "NODE_ENV=production webpack -p"
   },
   "keywords": [
     "bitcoin"
@@ -51,6 +49,7 @@
     "css-loader": "0.28.7",
     "dotenv": "^4.0.0",
     "dtrace-provider": "^0.8.5",
+    "ethereum-address": "^0.0.4",
     "expose-loader": "^0.7.3",
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^2.26.0",
@@ -68,6 +67,7 @@
     "koa-redis": "3.1.1",
     "koa-router": "7.2.1",
     "koa-socket": "^4.4.0",
+    "koa-static": "^4.0.2",
     "kue": "^0.11.6",
     "material-ui": "^1.0.0-beta.19",
     "mongodb": "2.2.33",
@@ -91,6 +91,7 @@
     "react-share": "^1.16.0",
     "react-tap-event-plugin": "^3.0.2",
     "redux": "^3.6.0",
+    "redux-form": "^7.2.0",
     "redux-logger": "3.0.6",
     "redux-raven-middleware": "^1.2.0",
     "redux-saga": "0.16.0",

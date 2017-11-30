@@ -1,11 +1,10 @@
-import adaptMongooseErrorToReduxForm from 'server/lib/adaptMongooseErrorToReduxForm'
-
 /**
  * Provides helper methods for controllers for different action results.
  */
 
-export const setSuccessResponse = (ctx) => {
+export const setSuccessResponse = (ctx, body) => {
   ctx.status = 200
+  ctx.body = body
 }
 
 export const setSuccessNoContentResponse = (ctx) => {
@@ -21,7 +20,8 @@ export const setFailedResponse = (ctx, err = {}) => {
   if (err.name === 'ValidationError') {
     ctx.status = 422
     ctx.body = {
-      details: adaptMongooseErrorToReduxForm(err.errors),
+      details: err.errors,
+      message: err.message,
       type: err.name,
     }
   } else {

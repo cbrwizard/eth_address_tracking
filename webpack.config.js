@@ -2,10 +2,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const Dotenv = require('dotenv-webpack')
-const webpack = require('webpack')
 const WriteFilePlugin = require('write-file-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 const { outputConfig, moduleConfig, resolveConfig } = require('./config/webpack_shared')
 const isProduction = require('./shared/lib/isProduction')
@@ -14,11 +12,6 @@ const dotEnvFilePath = isProduction ? './config/.env' : './config/.env.developme
 const performanceHints = isProduction ? 'warning' : false
 
 const plugins = [
-  new FaviconsWebpackPlugin({
-    logo: 'media/logo_256.png',
-    prefix: 'icons/',
-    title: 'ShouldIBuyBitcoin.today',
-  }),
   new HtmlWebpackPlugin({
     cache: false,
     template: 'client/templates/index.ejs',
@@ -29,18 +22,12 @@ const plugins = [
   }),
   new ExtractTextPlugin('app_[contenthash].css'),
   new CleanWebpackPlugin('dist/*.*'),
-  new webpack.ProvidePlugin({
-    IntlMessageFormat: ['intl-messageformat', 'default'],
-  }),
 ]
 
 if (!isProduction) {
   plugins.push(new WriteFilePlugin())
 }
 
-/*
-* TODO: Somehow properly enable hot module replacement.
-*/
 module.exports = {
   devServer: {
     compress: true,

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import dayReducer from 'client/reducers/dayReducer'
+import addressesReducer from 'client/reducers/addressesReducer'
 
 export default combineReducers({
-  day: dayReducer,
+  addresses: addressesReducer,
 })
