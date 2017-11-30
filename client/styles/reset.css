@@ -1,0 +1,11 @@
+form,
+p {
+  margin: 0;
+}
+
+html,
+body,
+main {
+  margin: 0;
+  padding: 0;
+}

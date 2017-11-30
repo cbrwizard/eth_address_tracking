@@ -1,0 +1,18 @@
+/*
+  For bitcoinium widget https://bitcoinium.com/widgets
+ */
+
+#bitcoinium-widget #bitcoinium-widget-wrapper {
+  height: auto;
+  background: none;
+  border: none;
+  color: #ccc;
+}
+
+#bitcoinium-widget .level:nth-of-type(n + 4) {
+  display: none;
+}
+
+#bitcoinium-widget text {
+  fill: #ccc;
+}

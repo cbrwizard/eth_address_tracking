@@ -1,0 +1,15 @@
+html,
+body,
+main,
+.h-height-full {
+	height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #1e1e1e;
+	min-width: 320px;
+}
