@@ -36,9 +36,7 @@ export const emitFakeEvent = async (io, storage, fromAddressKey) => {
   if (addressInSession && addressInSession.mockEventsLeft) {
     addressInSession.mockEventsLeft -= 1
     await createEvent(io, addressInSession.key)
-    await delay(faker.random.number({ min: 500, max: 2000 }))
+    await delay(faker.random.number({ max: 2000, min: 500 }))
     return emitFakeEvent(io, storage, fromAddressKey)
-  } else {
-    return false
   }
 }

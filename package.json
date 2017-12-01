@@ -1,27 +1,32 @@
 {
-  "name": "shouldIBuyBitcoin.today",
+  "name": "eth_address_tracking",
   "version": "0.0.1",
-  "description": "A simple website which answers a single question: should you buy bitcoin today or not? Powered by crowdsourcing.",
+  "description": "Track ETH addresses",
   "main": "index.js",
   "scripts": {
     "lint": "eslint client/**/*.js server/**/*.js shared/**/*.js",
     "backend:dev": "NODE_PATH=. ENV=development NODE_ENV=development pm2 start processes.config.js --watch --only backend --no-daemon --env development",
     "frontend:dev": "ENV=development NODE_ENV=development webpack-dev-server --inline",
-    "start": "NODE_ENV=production webpack -p && node ./server/index.js"
+    "start": "NODE_ENV=production webpack -p && node ./server/index.js",
+    "test": "NODE_ENV=test karma start client/karma.conf.js"
   },
-  "keywords": [
-    "bitcoin"
-  ],
   "author": "Fyodor Ivanishchev <cbrwizard@gmail.com> (http://cbrwizard.com)",
   "license": "MIT",
-  "homepage": "shouldibuybitcoin.today",
+  "homepage": "https://eth-address-tracking2.herokuapp.com",
   "devDependencies": {
+    "deep-freeze": "^0.0.1",
     "eslint": "^4.10.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-import-resolver-webpack": "^0.8.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "7.4.0",
+    "expect": "^21.2.1",
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1",
+    "karma-webpack": "^2.0.6",
     "prettier": "^1.7.3",
     "prettier-eslint": "^8.2.0",
     "redux-devtools": "3.4.0",
@@ -104,7 +109,7 @@
     "url-loader": "^0.6.2",
     "web3": "^0.20.2",
     "webpack": "^3.8.1",
-    "write-file-webpack-plugin": "^4.0.2",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "write-file-webpack-plugin": "^4.0.2"
   }
 }

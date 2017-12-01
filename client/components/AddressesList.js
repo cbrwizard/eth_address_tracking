@@ -39,13 +39,12 @@ class AddressesList extends React.Component {
             Add some addresses to watch their events
           </Typography>
         )}
-        {addresses.map((address) => (
+        {addresses.map(address => (
           <Grid item key={address}>
             <Address {...{ address, onRemoveClick }} />
           </Grid>
         ))}
       </Grid>
-
     )
   }
 }

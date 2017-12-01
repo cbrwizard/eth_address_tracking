@@ -1,16 +1,12 @@
 const dotenv = require('dotenv')
 
-const isProduction = require('shared/lib/isProduction')
-
-const dotEnvFilePath = isProduction
-  ? './config/.env'
-  : './config/.env.development'
-dotenv.config({ path: dotEnvFilePath })
+dotenv.config({ path: './config/.env.development' })
 
 module.exports = {
   apps: [
     {
       env: {
+        API_PORT: process.env.API_PORT,
         KOA_SECRET: process.env.KOA_SECRET,
         NODE_ENV: process.env.NODE_ENV,
       },

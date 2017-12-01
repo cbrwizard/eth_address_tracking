@@ -33,7 +33,5 @@ export const createAddress = async (ctx, filteredParams) => {
  * Is responsible for deleting an address.
  */
 export const deleteAddress = (ctx, filteredParams) => {
-  ctx.session.addresses = ctx.session.addresses.filter(address =>
-    address.key !== filteredParams.address
-  )
+  ctx.session.addresses = ctx.session.addresses.filter(address => address.key !== filteredParams.address)
 }

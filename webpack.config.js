@@ -15,7 +15,7 @@ const plugins = [
   new HtmlWebpackPlugin({
     cache: false,
     template: 'client/templates/index.ejs',
-    title: 'ShouldIBuyBitcoin.today',
+    title: 'Eth address tracking',
   }),
   new Dotenv({
     path: dotEnvFilePath,

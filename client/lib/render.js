@@ -13,11 +13,10 @@ injectTapEventPlugin()
  * Is responsible for rendering the whole app in the window.
  * Also turns on Google Analytics.
  */
-const render = (Root, store) => {
-  return hydrate(
-    <Root store={store} />,
-    document.getElementById('root')
-  )
-}
+const render = (Root, store) => hydrate(
+  <Root store={store} />,
+  document.getElementById('root')
+)
+
 
 export default render

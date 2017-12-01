@@ -7,8 +7,8 @@ import Typography from 'material-ui/Typography'
 import Event from 'client/components/Event'
 
 const propTypes = {
-  events: array.isRequired,
   classes: object.isRequired,
+  events: array.isRequired,
 }
 
 const styleSheet = {

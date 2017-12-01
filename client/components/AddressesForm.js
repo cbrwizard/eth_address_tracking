@@ -33,16 +33,17 @@ const propTypes = {
   handleSubmit: func.isRequired,
 }
 
-const validateAddresses = (value) =>
-  isEthereumAddress(value) ? undefined : 'Must be Ethereum address'
+const validateAddresses = (value) => {
+  if (isEthereumAddress(value)) {
+    return undefined
+  }
+  return 'Must be Ethereum address'
+}
 
 /*
  * Is responsible for rendering an Addresses form.
  */
-const AddressesForm = ({
-                         classes,
-                         handleSubmit,
-                       }) => (
+const AddressesForm = ({ classes, handleSubmit }) => (
   <form onSubmit={handleSubmit}>
     <Typography type="headline">
       Enter an ETH address to track, one at a time.
