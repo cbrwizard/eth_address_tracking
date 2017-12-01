@@ -3,8 +3,9 @@ import ethereumAddress from 'ethereum-address'
 
 import { setSuccessResponse, setFailedResponse } from 'server/lib/responses'
 import createValidationError from 'server/errors/ValidationError'
+import serializeAddress from 'server/serializers/serializeAddress'
 
-const filterPostParams = unfilteredParams =>
+const filterParams = unfilteredParams =>
   pick(['address'], unfilteredParams)
 
 const isAddressAlreadyAdded = (address, addedAddresses) =>
@@ -22,38 +23,53 @@ const get = async (ctx) => {
   try {
     ensureAddressesInStorage(ctx)
 
-    ctx.body = ctx.session.addresses
-    return setSuccessResponse(ctx)
+    return setSuccessResponse(ctx, ctx.session.addresses.map(serializeAddress))
   } catch (err) {
     return setFailedResponse(ctx, err)
   }
 }
 
+// TODO: use a service here.
 const post = async (ctx) => {
   try {
-    const filteredParams = filterPostParams(ctx.request.body)
+    ensureAddressesInStorage(ctx)
+
+    const filteredParams = filterParams(ctx.request.body)
     if (!ethereumAddress.isAddress(filteredParams.address)) {
-      throw createValidationError('Must be Ethereum address')
+      throw createValidationError('address', 'Must be Ethereum address')
     }
     if (isAddressAlreadyAdded(filteredParams.address, ctx.session.addresses)) {
-      throw createValidationError('Address already included')
+      throw createValidationError('address', 'Address already included')
     }
-
-    ensureAddressesInStorage(ctx)
 
     ctx.session.addresses.push({
       key: filteredParams.address,
       mockEventsLeft: MOCK_EVENTS_LEFT_INITIAL_VALUE,
     })
 
-    // cur: move to a serializer
-    return setSuccessResponse(ctx, ctx.session.addresses.map(address => address.key))
+    return setSuccessResponse(ctx, ctx.session.addresses.map(serializeAddress))
+  } catch (err) {
+    return setFailedResponse(ctx, err)
+  }
+}
+
+// TODO: use a service here.
+const del = async (ctx) => {
+  try {
+    ensureAddressesInStorage(ctx)
+    const filteredParams = filterParams(ctx.request.body)
+    ctx.session.addresses = ctx.session.addresses.filter(address =>
+      address.key !== filteredParams.address
+    )
+
+    return setSuccessResponse(ctx, ctx.session.addresses.map(serializeAddress))
   } catch (err) {
     return setFailedResponse(ctx, err)
   }
 }
 
 export default {
+  del,
   get,
   post,
 }

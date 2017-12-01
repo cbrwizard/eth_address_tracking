@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles'
 import Grid from 'material-ui/Grid'
 
 import AddressesFormContainer from 'client/containers/AddressesFormContainer'
+import AddressesListContainer from 'client/containers/AddressesListContainer'
 
 const propTypes = {
   classes: object.isRequired,
@@ -23,8 +24,9 @@ const styleSheet = {
  */
 const App = classes => (
   <Grid className={classes.container} container direction="column">
-    <Grid className={classes.question} component="header" item>
+    <Grid component="header" item>
       <AddressesFormContainer />
+      <AddressesListContainer />
     </Grid>
   </Grid>
 )

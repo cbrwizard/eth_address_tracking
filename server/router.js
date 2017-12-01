@@ -7,5 +7,6 @@ const router = new Router()
 router
   .get('/addresses', addressesController.get)
   .post('/addresses', addressesController.post)
+  .del('/addresses', addressesController.del)
 
 export default router

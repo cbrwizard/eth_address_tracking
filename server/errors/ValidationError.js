@@ -1,5 +1,6 @@
-const createValidationError = (message) => {
+const createValidationError = (key, message) => {
   const error = new Error(message)
+  error.errors = {[key]: message}
   error.name = 'ValidationError'
   return error
 }

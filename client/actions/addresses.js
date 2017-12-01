@@ -1,4 +1,4 @@
-import { ADD, APPEND } from 'client/constants/redux/addresses'
+import { ADD, REMOVE, SET } from 'client/constants/redux/addresses'
 
 /*
  * Is responsible for handling the interaction with addresses.
@@ -8,7 +8,12 @@ export const add = address => ({
   type: ADD,
 })
 
-export const append = address => ({
+export const remove = address => ({
   payload: address,
-  type: APPEND,
+  type: REMOVE,
+})
+
+export const set = addresses => ({
+  payload: addresses,
+  type: SET,
 })
