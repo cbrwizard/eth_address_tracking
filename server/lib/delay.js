@@ -1,3 +1,6 @@
+/**
+ * Adapts setTimeout to Promises.
+ */
 const delay = duration =>
   new Promise((resolve) => {
     setTimeout(() => {

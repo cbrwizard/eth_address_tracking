@@ -19,11 +19,11 @@ const defaultProps = {
  * Is responsible for rendering a MUI's TextField inside a RF's Field.
  */
 const ReduxFormTextField = ({
-                              input,
-                              label,
-                              meta: { touched, error },
-                              ...other
-                            }) => (
+  input,
+  label,
+  meta: { touched, error },
+  ...other
+}) => (
   <TextField
     error={touched && !!error}
     {...input}

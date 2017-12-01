@@ -39,9 +39,6 @@ const moduleConfig = {
       },
       test: /\.(png|woff|woff2|eot|ttf|svg|gif)?$/,
     },
-    { test: /pixi\.js/, use: ['expose-loader?PIXI'] },
-    { test: /phaser-split\.js$/, use: ['expose-loader?Phaser'] },
-    { test: /p2\.js/, use: ['expose-loader?p2'] },
   ],
 }
 
