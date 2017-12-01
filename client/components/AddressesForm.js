@@ -1,4 +1,5 @@
 import Button from 'material-ui/Button'
+import { blue } from 'material-ui/colors'
 import Grid from 'material-ui/Grid'
 import React from 'react'
 import { func, object } from 'prop-types'
@@ -14,10 +15,16 @@ const styleSheet = {
     margin: '5px 0 0',
   },
   button: {
-    margin: '2px',
+    '&:hover': {
+      backgroundColor: blue[700],
+    },
+    backgroundColor: blue[500],
+    color: '#fff',
   },
-  form: {
-    width: '400px',
+  inputContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: '0 auto',
   },
 }
 
@@ -37,24 +44,30 @@ const AddressesForm = ({
                          classes,
                          handleSubmit,
                        }) => (
-  <form onSubmit={handleSubmit} className={`${classes.form} h-center-text`}>
-    <Typography type="display3">
-      Enter an address to track, one at a time.
+  <form onSubmit={handleSubmit}>
+    <Typography type="headline">
+      Enter an ETH address to track, one at a time.
     </Typography>
-    <Grid item>
-      <Field
-        fullWidth
-        name="address"
-        component={ReduxFormTextField}
-        label="Ethereum Address"
-        type="text"
-        validate={[validateAddresses]}
-      />
-    </Grid>
-    <Grid item>
-      <Button color="accent" className={classes.button} type="submit" raised>
-        Submit
-      </Button>
+    <Grid container className={classes.inputContainer}>
+      <Grid item>
+        <Field
+          fullWidth
+          name="address"
+          component={ReduxFormTextField}
+          label="Ethereum Address"
+          type="text"
+          validate={[validateAddresses]}
+        />
+      </Grid>
+      <Grid item>
+        <Button
+          className={classes.button}
+          type="submit"
+          raised
+        >
+          Submit
+        </Button>
+      </Grid>
     </Grid>
   </form>
 )

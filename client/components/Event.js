@@ -14,27 +14,43 @@ const propTypes = {
 }
 
 const styleSheet = {
-  container: {},
+  container: {
+    borderBottom: '1px solid #ddd',
+    margin: 0,
+    padding: '0 0 20px',
+  },
 }
 
 /*
  * Is responsible for rendering an event
  */
 const Event = ({ event, classes }) => (
-  <Grid container>
+  <Grid container className={classes.container} direction="column">
     <Grid item>
       <Typography>
-        {`From: ${event.from}`}
+        <b>
+          From:
+        </b>
+        {' '}
+        {event.from}
       </Typography>
     </Grid>
     <Grid item>
       <Typography>
-        {`To: ${event.to}`}
+        <b>
+          To:
+        </b>
+        {' '}
+        {event.to}
       </Typography>
     </Grid>
     <Grid item>
       <Typography>
-        {`Value: ${event.value}`}
+        <b>
+          Value:
+        </b>
+        {' '}
+        {event.value}
       </Typography>
     </Grid>
   </Grid>

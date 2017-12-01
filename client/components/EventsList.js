@@ -12,7 +12,9 @@ const propTypes = {
 }
 
 const styleSheet = {
-  container: {},
+  heading: {
+    marginBottom: '10px',
+  },
 }
 
 /*
@@ -20,6 +22,9 @@ const styleSheet = {
  */
 const EventsList = ({ events, classes }) => (
   <Grid container direction="column">
+    <Typography className={classes.heading} type="title">
+      Events
+    </Typography>
     {!events.length && (
       <Typography>
         Events from addresses being watched will be displayed here.

@@ -22,6 +22,9 @@ const moduleConfig = {
             },
           },
           {
+            loader: 'sass-loader',
+          },
+          {
             loader: 'postcss-loader',
           },
         ],

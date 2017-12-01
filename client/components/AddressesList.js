@@ -14,7 +14,9 @@ const propTypes = {
 }
 
 const styleSheet = {
-  container: {},
+  heading: {
+    marginBottom: '10px',
+  },
 }
 
 /*
@@ -29,9 +31,12 @@ class AddressesList extends React.Component {
     const { addresses, classes, onRemoveClick } = this.props
     return (
       <Grid container direction="column">
+        <Typography className={classes.heading} type="title">
+          Watched addresses
+        </Typography>
         {!addresses.length && (
           <Typography>
-            Addresses being watched will be displayed here.
+            Add some addresses to watch their events
           </Typography>
         )}
         {addresses.map((address) => (

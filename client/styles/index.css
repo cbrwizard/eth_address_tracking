@@ -1,4 +1,4 @@
-@import './../../node_modules/react-redux-toastr/src/styles/index.scss';
+@import '~react-redux-toastr/src/styles/index.scss';
 
 @import './fonts.css';
 @import './reset.css';

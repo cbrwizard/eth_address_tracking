@@ -2,7 +2,7 @@ html,
 body,
 main,
 .h-height-full {
-	height: 100%;
+  height: 100%;
 }
 
 * {
@@ -10,6 +10,6 @@ main,
 }
 
 body {
-  background: #1e1e1e;
-	min-width: 320px;
+  background: #fff;
+  min-width: 320px;
 }

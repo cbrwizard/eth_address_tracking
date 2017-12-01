@@ -12,21 +12,25 @@ const propTypes = {
 }
 
 const styleSheet = {
-  container: {},
+  inputContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: '0 auto',
+  },
 }
 
 /*
  * Is responsible for rendering an address which is being watched
  */
 const Address = ({ address, classes, onRemoveClick }) => (
-  <Grid container>
+  <Grid container className={classes.inputContainer}>
     <Grid item>
       <Typography>
         {address}
       </Typography>
     </Grid>
     <Grid item>
-      <Button onClick={() => onRemoveClick(address)}>
+      <Button raised color="accent" onClick={() => onRemoveClick(address)}>
         Stop watching
       </Button>
     </Grid>
