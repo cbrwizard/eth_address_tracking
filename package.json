@@ -52,6 +52,7 @@
     "ethereum-address": "^0.0.4",
     "expose-loader": "^0.7.3",
     "extract-text-webpack-plugin": "^3.0.2",
+    "faker": "^4.1.0",
     "html-webpack-plugin": "^2.26.0",
     "intl": "^1.2.5",
     "is-node": "^1.0.2",

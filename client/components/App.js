@@ -5,6 +5,7 @@ import Grid from 'material-ui/Grid'
 
 import AddressesFormContainer from 'client/containers/AddressesFormContainer'
 import AddressesListContainer from 'client/containers/AddressesListContainer'
+import EventsListContainer from 'client/containers/EventsListContainer'
 
 const propTypes = {
   classes: object.isRequired,
@@ -27,6 +28,7 @@ const App = classes => (
     <Grid component="header" item>
       <AddressesFormContainer />
       <AddressesListContainer />
+      <EventsListContainer />
     </Grid>
   </Grid>
 )

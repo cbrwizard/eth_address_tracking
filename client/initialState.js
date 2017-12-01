@@ -3,6 +3,7 @@
  */
 const initialState = {
   addresses: [],
+  events: [],
 }
 
 export default initialState
