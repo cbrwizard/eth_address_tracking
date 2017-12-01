@@ -1,6 +1,6 @@
 import { emitFakeEvent } from 'server/services/events'
 import createValidationError from 'server/errors/ValidationError'
-import ethereumAddress from 'ethereum-address'
+import isEthereumAddress from 'shared/lib/isEthereumAddress'
 
 const isAddressAlreadyAdded = (address, addedAddresses) =>
   addedAddresses.some(addedAddress => addedAddress.key === address)
@@ -11,7 +11,7 @@ const MOCK_EVENTS_LEFT_INITIAL_VALUE = 25
  * Is responsible for creating an address.
  */
 export const createAddress = async (ctx, filteredParams) => {
-  if (!ethereumAddress.isAddress(filteredParams.address)) {
+  if (!isEthereumAddress(filteredParams.address)) {
     throw createValidationError('address', 'Must be Ethereum address')
   }
   if (isAddressAlreadyAdded(filteredParams.address, ctx.session.addresses)) {

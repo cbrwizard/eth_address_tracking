@@ -6,8 +6,8 @@ import { func, object } from 'prop-types'
 import { Field } from 'redux-form'
 import { withStyles } from 'material-ui/styles'
 import Typography from 'material-ui/Typography'
-import ethereumAddress from 'ethereum-address'
 
+import isEthereumAddress from 'shared/lib/isEthereumAddress'
 import ReduxFormTextField from 'client/components/form/ReduxFormTextField'
 
 const styleSheet = {
@@ -34,8 +34,7 @@ const propTypes = {
 }
 
 const validateAddresses = (value) =>
-  ethereumAddress.isAddress(value) ? undefined : 'Must be Ethereum address'
-
+  isEthereumAddress(value) ? undefined : 'Must be Ethereum address'
 
 /*
  * Is responsible for rendering an Addresses form.
