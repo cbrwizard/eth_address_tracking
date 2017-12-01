@@ -2,10 +2,23 @@ import { call, put, takeLatest } from 'redux-saga/effects'
 import { actions as toastrActions } from 'react-redux-toastr'
 import { reset, stopSubmit } from 'redux-form'
 
-import { removeFromState, set } from 'client/actions/addresses'
+import { set } from 'client/actions/addresses'
 import { ADDRESSES_FORM } from 'client/constants/forms'
-import { ADD, REMOVE } from 'client/constants/redux/addresses'
-import { del, post } from 'client/api/addresses'
+import { ADD, LOAD, REMOVE } from 'client/constants/redux/addresses'
+import { del, index, post } from 'client/api/addresses'
+
+function* load() {
+  try {
+    const allAddresses = yield call(index)
+    yield put(set(allAddresses))
+  } catch (error) {
+    yield put(toastrActions.add({
+      position: 'top-right',
+      title: 'Something went wrong while loading addresses',
+      type: 'error',
+    }))
+  }
+}
 
 function* add(action) {
   try {
@@ -47,6 +60,7 @@ function* remove(action) {
 
 function* addressesSaga() {
   yield takeLatest(ADD, add)
+  yield takeLatest(LOAD, load)
   yield takeLatest(REMOVE, remove)
 }
 

@@ -1,6 +1,6 @@
 import faker from 'faker'
 
-import broadcastAddEvent from 'server/broadcasts/broadcastAddEvent'
+import broadcastReceiveEvent from 'server/broadcasts/broadcastReceiveEvent'
 import delay from 'server/lib/delay'
 
 /**
@@ -19,7 +19,7 @@ const createEvent = async (io, fromAddressKey) => {
       fakeEventParams.from = fromAddressKey
       fakeEventParams.to = `0x${faker.internet.password(38)}`
     }
-    await broadcastAddEvent(io, fakeEventParams)
+    await broadcastReceiveEvent(io, fakeEventParams)
   } catch (err) {
     throw err
   }

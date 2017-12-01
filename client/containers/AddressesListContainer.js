@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { remove } from 'client/actions/addresses'
+import { load, remove } from 'client/actions/addresses'
 import AddressesList from 'client/components/AddressesList'
 
 const mapStateToProps = state => ({
@@ -8,6 +8,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  onLoad: () => {
+    dispatch(load())
+  },
   onRemoveClick: (address) => {
     dispatch(remove(address))
   },

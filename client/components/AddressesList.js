@@ -9,6 +9,7 @@ import Address from 'client/components/Address'
 const propTypes = {
   addresses: array.isRequired,
   classes: object.isRequired,
+  onLoad: func.isRequired,
   onRemoveClick: func.isRequired,
 }
 
@@ -19,20 +20,30 @@ const styleSheet = {
 /*
  * Is responsible for rendering all addresses which are watched
  */
-const AddressesList = ({ addresses, classes, onRemoveClick }) => (
-  <Grid container direction="column">
-    {!addresses.length && (
-      <Typography>
-        Addresses being watched will be displayed here.
-      </Typography>
-    )}
-    {addresses.map((address) => (
-      <Grid item key={address}>
-        <Address {...{ address, onRemoveClick }} />
+class AddressesList extends React.Component {
+  componentDidMount() {
+    this.props.onLoad()
+  }
+
+  render() {
+    const { addresses, classes, onRemoveClick } = this.props
+    return (
+      <Grid container direction="column">
+        {!addresses.length && (
+          <Typography>
+            Addresses being watched will be displayed here.
+          </Typography>
+        )}
+        {addresses.map((address) => (
+          <Grid item key={address}>
+            <Address {...{ address, onRemoveClick }} />
+          </Grid>
+        ))}
       </Grid>
-    ))}
-  </Grid>
-)
+
+    )
+  }
+}
 
 AddressesList.propTypes = propTypes
 
