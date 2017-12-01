@@ -1,6 +1,4 @@
-import {
-  SET,
-} from 'client/constants/redux/addresses'
+import { SET } from 'client/constants/redux/addresses'
 import initialState from 'client/initialState'
 
 const addressesReducer = (state = initialState.addresses, action) => {
